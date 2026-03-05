@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Portfolio</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+scroll-behavior:smooth;
+}
+
+/* NAVIGATION */
+
+nav{
+background:linear-gradient(to right,purple,pink);
+padding:15px;
+position:fixed;
+width:100%;
+top:0;
+box-shadow:0 3px 10px rgba(0,0,0,0.3);
+z-index:1000;
+}
+
+nav ul{
+list-style:none;
+display:flex;
+justify-content:center;
+}
+
+nav ul li{
+margin:0 25px;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+font-weight:bold;
+transition:0.3s;
+}
+
+nav ul li a:hover{
+color:#ffe6ff;
+}
+
+/* SECTIONS */
+
+section{
+padding:120px 20px;
+min-height:100vh;
+}
+
+/* HOME */
+
+#home{
+background:linear-gradient(to right,#c471f5,#fa71cd);
+color:white;
+text-align:center;
+}
+
+#home img{
+margin-top:20px;
+border-radius:50%;
+border:5px solid white;
+}
+
+/* PROJECTS */
+
+#projects{
+background:#fdf0ff;
+text-align:center;
+}
+
+.project-box{
+width:300px;
+background:white;
+border-radius:15px;
+padding:15px;
+margin:15px;
+display:inline-block;
+vertical-align:top;
+box-shadow:0 5px 15px rgba(200,0,255,0.2);
+transition:0.3s;
+}
+
+.project-box:hover{
+transform:translateY(-10px);
+box-shadow:0 10px 25px rgba(200,0,255,0.4);
+}
+
+.project-box img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:10px;
+cursor:pointer;
+}
+
+.project-box h3{
+margin:10px 0;
+color:#b300b3;
+}
+
+/* ABOUT */
+
+#about{
+background:#fdf0ff;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:120px 40px 80px;
+}
+
+.about-inner{
+max-width:900px;
+width:100%;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:0;
+border-radius:24px;
+overflow:hidden;
+box-shadow:0 20px 60px rgba(128,0,128,0.15);
+}
+
+.about-left{
+background:linear-gradient(160deg,purple 0%,pink 100%);
+padding:60px 40px;
+color:white;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.about-left .label{
+font-size:0.75rem;
+letter-spacing:0.18em;
+text-transform:uppercase;
+opacity:0.75;
+margin-bottom:12px;
+}
+
+.about-left h2{
+font-size:2.2rem;
+font-weight:bold;
+line-height:1.25;
+margin-bottom:20px;
+}
+
+.about-left h2 em{
+font-style:italic;
+opacity:0.85;
+}
+
+.about-left p{
+font-size:0.97rem;
+line-height:1.8;
+opacity:0.92;
+}
+
+.about-right{
+background:white;
+padding:60px 40px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+gap:24px;
+}
+
+.about-stat{
+border-left:3px solid pink;
+padding-left:18px;
+}
+
+.about-stat .stat-num{
+font-size:1.9rem;
+font-weight:bold;
+color:purple;
+line-height:1;
+}
+
+.about-stat .stat-label{
+font-size:0.8rem;
+color:#888;
+text-transform:uppercase;
+letter-spacing:0.08em;
+margin-top:4px;
+}
+
+.about-skills p{
+font-size:0.78rem;
+color:#aaa;
+text-transform:uppercase;
+letter-spacing:0.12em;
+margin-bottom:10px;
+}
+
+.skill-tags{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+}
+
+.skill-tag{
+background:#f5e6ff;
+color:purple;
+font-size:0.78rem;
+padding:5px 13px;
+border-radius:20px;
+font-weight:bold;
+}
+
+/* CONTACT */
+
+#contact{
+background:linear-gradient(to right,purple,pink);
+padding:120px 20px 80px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+}
+
+.contact-wrapper{
+max-width:820px;
+width:100%;
+}
+
+.contact-top{
+text-align:center;
+margin-bottom:50px;
+}
+
+.contact-top h2{
+font-size:2rem;
+color:white;
+margin-bottom:10px;
+}
+
+.contact-top p{
+color:rgba(255,255,255,0.85);
+font-size:0.95rem;
+}
+
+.contact-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:start;
+}
+
+.contact-info{
+color:white;
+}
+
+.contact-info h3{
+font-size:1.1rem;
+margin-bottom:22px;
+opacity:0.9;
+}
+
+.info-item{
+display:flex;
+align-items:flex-start;
+gap:14px;
+margin-bottom:20px;
+}
+
+.info-icon{
+width:38px;
+height:38px;
+border-radius:10px;
+background:rgba(255,255,255,0.15);
+border:1px solid rgba(255,255,255,0.2);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:1rem;
+flex-shrink:0;
+}
+
+.info-text .info-label{
+font-size:0.7rem;
+text-transform:uppercase;
+letter-spacing:0.1em;
+color:rgba(255,255,255,0.55);
+margin-bottom:3px;
+}
+
+.info-text .info-val{
+font-size:0.9rem;
+color:rgba(255,255,255,0.9);
+word-break:break-all;
+}
+
+.contact-form{
+background:rgba(255,255,255,0.12);
+border:1px solid rgba(255,255,255,0.2);
+border-radius:18px;
+padding:32px 28px;
+}
+
+.form-group{
+margin-bottom:18px;
+}
+
+.form-group label{
+display:block;
+font-size:0.73rem;
+text-transform:uppercase;
+letter-spacing:0.1em;
+color:rgba(255,255,255,0.65);
+margin-bottom:7px;
+}
+
+.form-group input,
+.form-group textarea{
+width:100%;
+background:rgba(255,255,255,0.1);
+border:1px solid rgba(255,255,255,0.2);
+border-radius:10px;
+padding:11px 14px;
+color:white;
+font-family:Arial,sans-serif;
+font-size:0.92rem;
+outline:none;
+transition:border-color 0.3s,background 0.3s;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder{
+color:rgba(255,255,255,0.3);
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+border-color:rgba(255,255,255,0.55);
+background:rgba(255,255,255,0.18);
+}
+
+.form-group textarea{
+height:110px;
+resize:vertical;
+}
+
+.form-row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+}
+
+.submit-btn{
+width:100%;
+padding:13px;
+background:white;
+color:purple;
+border:none;
+border-radius:10px;
+font-family:Arial,sans-serif;
+font-size:0.95rem;
+font-weight:bold;
+cursor:pointer;
+transition:opacity 0.3s,transform 0.2s;
+margin-top:4px;
+}
+
+.submit-btn:hover{
+opacity:0.88;
+transform:translateY(-2px);
+}
+
+.submit-btn:disabled{
+opacity:0.5;
+cursor:not-allowed;
+transform:none;
+}
+
+/* TOAST */
+
+#toast{
+display:none;
+position:fixed;
+bottom:30px;
+left:50%;
+transform:translateX(-50%);
+background:white;
+border:2px solid purple;
+color:purple;
+padding:13px 26px;
+border-radius:40px;
+font-size:0.9rem;
+z-index:9999;
+box-shadow:0 8px 25px rgba(128,0,128,0.25);
+white-space:nowrap;
+}
+
+#toast.show{
+display:block;
+animation:fadeInUp 0.4s ease forwards;
+}
+
+@keyframes fadeInUp{
+from{opacity:0;transform:translate(-50%,20px);}
+to{opacity:1;transform:translate(-50%,0);}
+}
+
+/* FOOTER */
+
+footer{
+background:#6a11cb;
+color:white;
+text-align:center;
+padding:15px;
+}
+
+/* FULLSCREEN VIEWER */
+
+.viewer{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.92);
+justify-content:center;
+align-items:center;
+z-index:5000;
+}
+
+.viewer.active{
+display:flex;
+}
+
+#viewerImage{
+display:none;
+max-width:90%;
+max-height:85%;
+border-radius:10px;
+object-fit:contain;
+}
+
+#viewerVideo{
+display:none;
+max-width:90%;
+max-height:85%;
+border-radius:10px;
+outline:none;
+}
+
+.close-viewer{
+position:absolute;
+top:25px;
+right:40px;
+font-size:35px;
+color:white;
+cursor:pointer;
+line-height:1;
+user-select:none;
+}
+
+.close-viewer:hover{
+color:#ffccff;
+}
+
+@media(max-width:700px){
+.about-inner{grid-template-columns:1fr;}
+.contact-grid{grid-template-columns:1fr;gap:28px;}
+.form-row{grid-template-columns:1fr;}
+}
+</style>
+
+</head>
+
+<body>
+
+<nav>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#projects">My Projects</a></li>
+<li><a href="#about">About Me</a></li>
+<li><a href="#contact">Contacts</a></li>
+</ul>
+</nav>
+
+<!-- HOME (original, unchanged) -->
+<section id="home">
+<h1>Hello, I'm Marjorie Tolentino</h1>
+<p>Welcome to my portfolio. I'm a 2nd year student from Bachelor of Science in Computer Science in Nemsu-Lianga Campus</p>
+<img src="642073608_1268821588453986_4494156536433354656_n.jpg" width="250">
+</section>
+
+<!-- PROJECTS (original, unchanged) -->
+<section id="projects">
+
+<h2>My Projects</h2>
+
+<div class="project-box">
+<img src="ROBOT CAR.jfif" onclick="openViewer(this)">
+<h3>ESP32_CAM</h3>
+<p>An ESP32 robot camera connected to WiFi and controlled using a phone.</p>
+</div>
+
+<div class="project-box">
+<img src="OOP2.jfif" onclick="openViewer(this,'OOP.mp4')">
+<h3>Library Management System</h3>
+<p>A system that tracks students and borrowed books.</p>
+</div>
+
+<div class="project-box">
+<img src="PEARLAS.png" onclick="openViewer(this)">
+<h3>Beach and Hotel Website</h3>
+<p>A website that shows beach and hotel offers.</p>
+</div>
+
+<div class="project-box">
+<img src="CATALOG.png" onclick="openViewer(this)">
+<h3>Catalog</h3>
+<p>We edited a catalog of any lipstick brand and put their prices on it in our subject in multimedia to explore the basic design.</p>
+</div>
+
+<div class="project-box">
+<img src="DIORAMA.jfif" onclick="openViewer(this)">
+<h3>Diorama</h3>
+<p>A diorama that shows sustainable city and rural side.</p>
+</div>
+
+<div class="project-box">
+<img src="job sync.jfif" onclick="openViewer(this,'jobsync_pitch.mp4')">
+<h3>Job Sync</h3>
+<p>A business start up that automatically synchronize job data, tasks, or records across multiple systems to ensure consistency and accuracy.</p>
+</div>
+
+</section>
+
+<!-- ABOUT (redesigned) -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-left">
+      <p class="label">Who I Am</p>
+      <h2>Driven by<br><em>curiosity &</em><br>creativity.</h2>
+      <p>As a 2nd year Computer Science student, I am focused on learning and improving myself every day. I am still exploring different areas in my course, especially in programming and technology, and I am doing my best to understand the lessons step by step.</p>
+    </div>
+    <div class="about-right">
+      <div class="about-stat">
+        <div class="stat-num">2nd Year</div>
+        <div class="stat-label">BS Computer Science · Nemsu-Lianga</div>
+      </div>
+      <div class="about-stat">
+        <div class="stat-num">6+</div>
+        <div class="stat-label">Projects Completed</div>
+      </div>
+      <div class="about-stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Passion for Technology</div>
+      </div>
+      <div class="about-skills">
+        <p>Skills & Interests</p>
+        <div class="skill-tags">
+          <span class="skill-tag">HTML & CSS</span>
+          <span class="skill-tag">Java OOP</span>
+          <span class="skill-tag">ESP32</span>
+          <span class="skill-tag">Web Design</span>
+          <span class="skill-tag">Multimedia</span>
+          <span class="skill-tag">Problem Solving</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT (redesigned with hire me form) -->
+<section id="contact">
+  <div class="contact-wrapper">
+    <div class="contact-top">
+      <h2>Contact Me</h2>
+      <p>Want to hire me? Fill out the form and I'll get back to you!</p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Info -->
+      <div class="contact-info">
+        <h3>My Details</h3>
+        <div class="info-item">
+          <div class="info-icon">✉️</div>
+          <div class="info-text">
+            <div class="info-label">Email</div>
+            <div class="info-val">kiaratolentino17@gmail.com</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📱</div>
+          <div class="info-text">
+            <div class="info-label">Phone</div>
+            <div class="info-val">09705342903</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📘</div>
+          <div class="info-text">
+            <div class="info-label">Facebook</div>
+            <div class="info-val">kiara</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📸</div>
+          <div class="info-text">
+            <div class="info-label">Instagram</div>
+            <div class="info-val">@kyaaa_raa</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" id="senderName" placeholder="e.g. Juan dela Cruz">
+          </div>
+          <div class="form-group">
+            <label>Contact Number</label>
+            <input type="tel" id="senderPhone" placeholder="e.g. 09123456789">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Your Email</label>
+          <input type="email" id="senderEmail" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea id="senderMessage" placeholder="Tell me about the opportunity or project..."></textarea>
+        </div>
+        <button class="submit-btn" id="sendBtn" onclick="sendMessage()">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+<p>© 2026 Marjorie Tolentino</p>
+</footer>
+
+<!-- FULLSCREEN VIEWER -->
+<div id="viewer" class="viewer">
+<span class="close-viewer" onclick="closeViewer()">✖</span>
+<img id="viewerImage">
+<video id="viewerVideo" controls></video>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- EmailJS SDK (no framework needed) -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+/*
+  HOW TO ACTIVATE GMAIL NOTIFICATIONS
+  ------------------------------------
+  1. Sign up free at https://www.emailjs.com
+  2. Connect your Gmail → copy the SERVICE ID
+  3. Create an Email Template with these variables:
+       {{from_name}}  {{from_email}}  {{phone}}  {{message}}
+     Copy the TEMPLATE ID
+  4. Account > API Keys > copy your PUBLIC KEY
+  5. Paste the three values below
+*/
+const EJS_PUBLIC_KEY  = "8Za4Cke_FW6vSQ90z";   // ← replace
+const EJS_SERVICE_ID  = "service_3ap12cs";   // ← replace
+const EJS_TEMPLATE_ID = "template_z3x853e";  // ← replace
+
+emailjs.init(EJS_PUBLIC_KEY);
+
+function showToast(msg,success){
+  const t=document.getElementById("toast");
+  t.textContent=(success?"✅ ":"❌ ")+msg;
+  t.className="show";
+  setTimeout(()=>{t.className="";},4000);
+}
+
+function sendMessage(){
+  const name=document.getElementById("senderName").value.trim();
+  const phone=document.getElementById("senderPhone").value.trim();
+  const email=document.getElementById("senderEmail").value.trim();
+  const message=document.getElementById("senderMessage").value.trim();
+
+  if(!name||!email||!message){
+    showToast("Please fill in your name, email, and message.",false);
+    return;
+  }
+
+  const btn=document.getElementById("sendBtn");
+  btn.disabled=true;
+  btn.textContent="Sending...";
+
+  emailjs.send(EJS_SERVICE_ID,EJS_TEMPLATE_ID,{
+    from_name:name,
+    from_email:email,
+    phone:phone||"Not provided",
+    message:message
+  })
+  .then(()=>{
+    showToast("Message sent! I'll get back to you soon.",true);
+    document.getElementById("senderName").value="";
+    document.getElementById("senderPhone").value="";
+    document.getElementById("senderEmail").value="";
+    document.getElementById("senderMessage").value="";
+  })
+  .catch(err=>{
+    console.error(err);
+    showToast("Something went wrong. Please try again.",false);
+  })
+  .finally(()=>{
+    btn.disabled=false;
+    btn.textContent="Send Message";
+  });
+}
+
+/* Viewer */
+function openViewer(img, videoSrc){
+  const viewer     = document.getElementById("viewer");
+  const viewerImg  = document.getElementById("viewerImage");
+  const viewerVid  = document.getElementById("viewerVideo");
+
+  // Reset both first
+  viewerImg.style.display = "none";
+  viewerVid.style.display = "none";
+  viewerVid.pause();
+  viewerVid.src = "";
+
+  if(videoSrc){
+    viewerVid.style.display = "block";
+    viewerVid.src = videoSrc;
+    viewerVid.load();
+    viewerVid.play().catch(()=>{});
+  } else {
+    viewerImg.style.display = "block";
+    viewerImg.src = img.src;
+  }
+
+  viewer.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeViewer(){
+  const viewer    = document.getElementById("viewer");
+  const viewerVid = document.getElementById("viewerVideo");
+  viewerVid.pause();
+  viewerVid.src = "";
+  viewer.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+document.getElementById("viewer").addEventListener("click", function(e){
+  if(e.target === this) closeViewer();
+});
+
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape") closeViewer();
+});
+</script>
+
+</body>
+</html>
